@@ -83,38 +83,24 @@ void insertAtTail(Node *&head, Node *&tail, int data)
 void deleteNode(Node *&head, Node *&tail, int pos)
 {
     int len = lengthLL(head);
-    // if (pos == 1)
-    // {
-    //     // delete from head
-    //     if (head == NULL)
-    //     {
-    //         cout << "\nCan not perform delete operation coz ll is empty\n";
-    //     }
-    //     else
-    //     {
-    //         Node *temp = head;
-    //         head = head->next;
-    //         head->prev = NULL;
-    //         temp->next = NULL;
-    //         delete temp;
-    //     }
-    // }
     if (pos == 1)
     {
-        // Delete from head
-        Node *temp = head;
-        head = head->next;  // Move head to next node
-        if (head != NULL)    // If there is a new head, set its prev pointer to NULL
+        // delete from head
+        if (head == NULL)
         {
-            head->prev = NULL;
+            cout << "\nCan not perform delete operation coz ll is empty\n";
         }
         else
         {
-            tail = NULL; // If the list becomes empty, set tail to NULL
+            Node *temp = head;
+            head = head->next;
+            head->prev = NULL;
+            temp->next = NULL;
+            delete temp;
         }
-        delete temp;
     }
-    if (pos == len )
+   
+   else if (pos == len )
     {
         // delete from tail
 
@@ -156,7 +142,7 @@ int main()
     insertAtHead(head, tail, 30);
     insertAtHead(head, tail, 20);
     insertAtHead(head, tail, 10);
-    insertAtTail(head, tail, 90);
+  
 
     cout << "Printing LL before deleting node\n\n";
     
