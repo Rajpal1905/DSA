@@ -122,7 +122,7 @@ void insertAtGivenPosition(Node*&head ,Node*&tail , int data ,int pos ){
         head = prev;
     }
 
-   void findCycle(Node*head){
+    void findAndRomoveCycle(Node*head){
         Node*slow = head;
         Node*fast = head;
         while(fast != NULL){
@@ -140,22 +140,17 @@ void insertAtGivenPosition(Node*&head ,Node*&tail , int data ,int pos ){
             
         }
         slow = head;
-        Node*prev = NULL;
         while (slow != fast)
         {
-            prev = fast;
             slow = slow->next;
             fast = fast->next;
         }
-
-        prev->next = NULL;
-
-        cout<<"printinggg :\n";
-        printingLL(head);
         
-    }
 
-   
+        cout<< "Starting point of loop : "<<slow->data;
+        
+        return ;
+    }
 int main(){
     // Node a; //static node 
 
