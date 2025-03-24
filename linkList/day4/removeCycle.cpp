@@ -171,7 +171,7 @@ int main(){
     Node*tail = fifth;
 
 
-    findCycle(head);
+    findAndRomoveCycle(head);
 
 
 
