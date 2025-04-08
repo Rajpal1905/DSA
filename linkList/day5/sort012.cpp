@@ -43,6 +43,19 @@ int  lenOfLL (Node *head){
     return count;
 }
 
+// void insertAtHead(Node* &head , int data){
+
+
+//     // create a new node 
+//     Node*newNode = new Node(data) ;
+
+//     // attach new node 
+//     newNode->next = head;
+
+//     // transfer head to new node 
+//     head  = newNode;
+// }
+
 void insertAtHead(Node* &head,int data){
     if(head == NULL){
         Node*newNode = new Node(data);
@@ -109,59 +122,68 @@ void insertAtGivenPosition(Node*&head ,Node*&tail , int data ,int pos ){
         head = prev;
     }
 
-    void findAndRomoveCycle(Node*head){
-        Node*slow = head;
-        Node*fast = head;
-        while(fast != NULL){
-            fast = fast->next;
-            if(fast !=NULL )
-            {
-                fast = fast->next;
-                slow = slow->next;
-            }
-            if (slow==fast)
-            {
-                cout<< "There is a cycle\n";
-                break;
-            }
-            
-        }
-        slow = head;
-        while (slow != fast)
-        {
-            slow = slow->next;
-            fast = fast->next;
-        }
-        
+     void sortColor(Node*&head){
 
-        cout<< "Starting point of loop : "<<slow->data;
+        Node*zeros = NULL;
+        Node*ones = NULL;
+        Node*twos = NULL;
+        Node*zdummy = zeros;
+        Node*tdummy = twos;
+        Node*odummy = ones;
+
+        Node*curr = head;
+        if(head == NULL){
+            cout<<"Linked list is empty";
+            return ;
+        }
+        while (curr != NULL)
+        {
+            if(curr->data == 0){
+                zeros->next = curr;
+                zeros = zeros->next;
+            }
+            if(curr->data == 1){
+                ones->next = curr;
+                ones = ones->next;
+            }
+            if(curr->data == 2){
+                twos->next = curr;
+                twos = twos->next;
+            }
+            curr = curr->next;  
+        }
+        zeros->next = odummy->next;
+        ones->next = tdummy->next;
+
+        printingLL(odummy->next) ;
         
-        return ;
-    }
+     }
+
 int main(){
     // Node a; //static node 
 
-    Node*first = new Node(10);  // dynamic constructor
-    Node*second = new Node(20);  
-    Node*third = new Node(30);  
-    Node*fourth = new Node(40);  
-    Node*fifth = new Node(50);  
+    Node*first = new Node(0);  // dynamic constructor
+    Node*second = new Node(2);  
+    Node*third = new Node(0);  
+    Node*fourth = new Node(1);  
+    Node*fifth = new Node(0);  
+    Node*six = new Node(2);  
+    Node*seven = new Node(1);  
     
     first->next = second;
     second->next = third;
     third->next = fourth;
     fourth->next = fifth;
-    
-    fifth->next = third;
+    fifth->next = six;
+    six->next = seven;
     
     Node*head = first;
-    Node*tail = fifth;
 
-
-    findAndRomoveCycle(head);
+    printingLL(head);   
+    sortColor(head);
 
 
 
 
    return 0; 
-}
+}   
