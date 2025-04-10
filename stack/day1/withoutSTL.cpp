@@ -15,6 +15,7 @@ class Stack{
         this->top = -1;
         this->size = size;
     }
+
     void push(int data){
         if(top == size-1){
             cout<<"Stack overflow Condition";
@@ -43,34 +44,34 @@ class Stack{
         else{
             cout<<"Stack is not empty";
             return;
-        }
-        
+        }  
     }
 
     int getSize(){
         return top+1;
     }
 
-    int getTop(){
-        if(top == -1){
-            cout<<"Empty Stack";
+    int getTop() {
+        if (top == -1) {
+            cout << "Empty Stack" << endl;
             return -1;
-        }
-        else{
+        } else {
             return arr[top];
         }
     }
 
-    void print(){
-
-        cout<<"Top  : "<<top<<endl;
-        cout<<"Top Element : "<<arr[top]<<endl;
-        cout<<"Stack : ";
-        for (int i = 0; i < getSize(); i++)
-        {
-            cout<<arr[i]<< " ";
+    void print() {
+        cout << "Top  : " << top << endl;
+        if (top != -1) {
+            cout << "Top Element : " << arr[top] << endl;
+        } else {
+            cout << "Stack is empty" << endl;
         }
-        cout<<endl<<endl;
+        cout << "Stack : ";
+        for (int i = 0; i <= top; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl << endl;
     }
 };
 
@@ -78,7 +79,7 @@ class Stack{
 int main(){
 
     Stack st(6);
-
+    
     st.push(13);
     st.push(12);
     st.push(11);
