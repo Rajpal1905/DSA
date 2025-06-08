@@ -4,10 +4,10 @@ using namespace std;
 class Student
 {
    
-    int id;
-    int age;
-    double Rate;
-    
+    double id;
+    double age;
+    char r;
+    bool  Rate;
 
 
 };
