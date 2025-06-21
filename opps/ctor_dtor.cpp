@@ -36,8 +36,15 @@ Student(){
         this->id = srcObj.id;
         this->v = new int(20);
     }
+    // suppose default Dtor 
+    // ~Student(){
+    //     cout<<"\n dtor is called \n";
+    // }
+
+    // here we can secure memory leak 
     ~Student(){
         cout<<"\n dtor is called \n";
+        delete v;
     }
 
 };
