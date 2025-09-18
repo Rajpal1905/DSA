@@ -1,49 +1,47 @@
 #include<iostream>
 #include<string>
+
 using namespace std;
 
+
+
 class Student {
-public: 
+    public : 
 
-    int id;
+    int age ;
+    int rollNo;
     string name;
-    float gpa;
-    string email;
-    int age;
-    bool isGraduated;
-
-Student(){
-
-}
-    Student(int studentId, string studentName, float studentGpa, string studentEmail, int studentAge) {
-        id = studentId;
-        name = studentName;
-        email = studentEmail;
-        isGraduated = false;
+    Student(){
+        cout<<"Default Ctor is called\n";
     }
 
-    Student(const Student & srcObj){
+    Student(int age, int rollNo, string name){
+        this->age = age;
+        this->name = name;
+        this->rollNo = rollNo;
+    }
+
+    Student( const Student & srcObj){
+        cout<<"copy Ctor is calling\n";
         this->name = srcObj.name;
         this->age = srcObj.age;
-        this->isGraduated = srcObj.isGraduated;
-        this->gpa = srcObj.gpa;
-        this->email = srcObj.email;
-        this->id = srcObj.id;
-
+        this->rollNo = srcObj.rollNo;
     }
 
+    void studing (){
+        cout<<"Student do study "<<endl;
+    }
 };
 
-int main() {
-    // Create some student objects
-    Student student1(1001, "Alice Johnson", 3.8, "alice@university.edu", 20);
-    Student student2(1002, "Bob Smith", 3.2, "bob@university.edu", 21);
-    Student student3(1003, "Charlie Brown", 2.9, "charlie@university.edu", 22);
-    Student s4;
-    s4 = student1;
 
-    cout<<s4.name;
-    
+int main(){
+    Student s1 (19 , 14, "Raj");
+
+    Student s2;
+    s2 = s1;
+    cout<<s1.name <<endl;
+    cout<<s2.name<<endl;
+
 
     return 0;
 }
